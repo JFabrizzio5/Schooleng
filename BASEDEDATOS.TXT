@@ -1,0 +1,79 @@
+-- Crear la base de datos
+CREATE DATABASE IF NOT EXISTS sistema_universitario;
+
+-- Seleccionar la base de datos
+USE sistema_universitario;
+
+-- Crear tabla para usuarios
+CREATE TABLE IF NOT EXISTS usuarios (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(50) NOT NULL,
+    contrasena VARCHAR(255) NOT NULL,
+    tipo ENUM('admin', 'profesor', 'alumno') NOT NULL
+);
+select*from usuarios;
+-- Crear tabla para cursos
+CREATE TABLE IF NOT EXISTS cursos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(50) NOT NULL
+);
+select*from cursos;
+-- Crear tabla para grupos
+CREATE TABLE IF NOT EXISTS grupos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    curso_id INT,
+    nombre VARCHAR(50) NOT NULL,
+    FOREIGN KEY (curso_id) REFERENCES cursos(id)
+);
+select*from grupos;
+-- Crear tabla para horarios
+CREATE TABLE IF NOT EXISTS horarios (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    profesor_id INT,
+    dia_semana VARCHAR(15) NOT NULL,
+    hora_inicio TIME NOT NULL,
+    hora_fin TIME NOT NULL,
+    grupo_id INT,
+    FOREIGN KEY (profesor_id) REFERENCES usuarios(id),
+    FOREIGN KEY (grupo_id) REFERENCES grupos(id)
+);
+select * from horarios;
+-- Crear tabla para calificaciones
+CREATE TABLE IF NOT EXISTS calificaciones (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    alumno_id INT,
+    curso_id INT,
+    calificacion FLOAT,
+    FOREIGN KEY (alumno_id) REFERENCES usuarios(id),
+    FOREIGN KEY (curso_id) REFERENCES cursos(id)
+);
+select * from calificaciones;
+
+-- Crear tabla para lista de alumnos por grupo y curso
+CREATE TABLE IF NOT EXISTS lista_alumnos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    alumno_id INT,
+    curso_id INT,
+    grupo_id INT,
+    FOREIGN KEY (alumno_id) REFERENCES usuarios(id),
+    FOREIGN KEY (curso_id) REFERENCES cursos(id),
+    FOREIGN KEY (grupo_id) REFERENCES grupos(id)
+);
+
+-- Crear trigger para verificar coincidencia de curso entre grupo y lista_alumnos
+DELIMITER //
+
+CREATE TRIGGER before_insert_lista_alumnos
+BEFORE INSERT ON lista_alumnos
+FOR EACH ROW
+BEGIN
+    DECLARE curso_grupo INT;
+    SELECT curso_id INTO curso_grupo FROM grupos WHERE id = NEW.grupo_id;
+    IF curso_grupo <> NEW.curso_id THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'Error: El curso del grupo y el curso del alumno no coinciden';
+    END IF;
+END //
+
+DELIMITER ;
+
