@@ -155,7 +155,7 @@ session_start();
                 <div class="cat-item position-relative overflow-hidden rounded mb-2">
                     <img class="img-fluid" src="img/cat-2.jpg" alt="">
                     <a class="cat-overlay text-white text-decoration-none" href="EmitirCertificado.php">
-                        <h4 class="text-white font-weight-medium">Emitir Certificados</h4>
+                        <h4 class="text-white font-weight-medium">Emitir Diplomas</h4>
                     </a>
                 </div>
             </div>

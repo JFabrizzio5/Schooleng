@@ -13,9 +13,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $sql = "INSERT INTO certificados (alumno_id, fecha_certificado, curso_id) VALUES ($alumno_id, '$fecha_certificado', $curso_id)";
 
     if ($conn->query($sql) === TRUE) {
-        echo "Certificado agregado correctamente";
+        echo "Diploma agregado correctamente";
     } else {
-        echo "Error al agregar el certificado: " . $conn->error;
+        echo "Error al agregar el diploma: " . $conn->error;
     }
 
     // Cerrar la conexión a la base de datos
@@ -186,11 +186,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         </div>
 
                         <div class="form-group">
-                            <label for="fecha_certificado">Fecha del Certificado:</label>
+                            <label for="fecha_certificado">Fecha del Diploma:</label>
                             <input type="date" class="form-control" name="fecha_certificado" id="fecha_certificado" required>
                         </div>
 
-                        <button type="submit" class="btn btn-primary">Enviar Certificado</button>
+                        <button type="submit" class="btn btn-primary">Enviar Diploma</button>
                     </form>
 
 </div>

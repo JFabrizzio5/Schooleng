@@ -145,7 +145,7 @@ $conn->close();
                 <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                     <div class="navbar-nav py-0">
                         <a href="AlumnoVista.php" class="nav-item nav-link active">Info</a>
-                        <a href="VerCertificados.php" class="nav-item nav-link">Certificados</a>
+                        <a href="VerCertificados.php" class="nav-item nav-link">Diplomas</a>
                         <!-- Puedes agregar este botón en tu página -->
                         <a href="../cerrar_sesion.php" class="nav-item nav-link active">Cerrar Sesión</a>
 

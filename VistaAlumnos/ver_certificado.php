@@ -183,7 +183,7 @@ $stmt->close();
     <div class="certificate col-xs-12">
         <div class="inner-border">
             <h2>COMPUINGLES</h2>
-            <h3>Certificado para:</h3>
+            <h3>Diploma para:</h3>
             <div class="row">
                 <div class="col-xs-6 col-xs-push-3 text-center name-wrapper">
                    <h2 class="handwritten"><?php echo $nombre_alumno; ?></h2>
@@ -194,7 +194,7 @@ $stmt->close();
             <h2 class="meltdown"><?php echo $nombre_curso; ?></h2>
             <div class="row">
                 <div class="col-xs-12 text-center date">
-                    Fecha de certificacion<br /><span class="handwritten"><?php echo $fecha_certificado; ?></span>
+                    Fecha de diploma<br /><span class="handwritten"><?php echo $fecha_certificado; ?></span>
                 </div>
               
 

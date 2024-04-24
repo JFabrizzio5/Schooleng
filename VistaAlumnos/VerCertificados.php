@@ -89,7 +89,7 @@ session_start(); // Iniciar la sesión
                     <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                         <div class="navbar-nav py-0">
                             <a href="AlumnoVista.php" class="nav-item nav-link">Info</a>
-                            <a href="VerCertificados.php" class="nav-item nav-link active">Certificados</a>
+                            <a href="VerCertificados.php" class="nav-item nav-link active">Diplomas</a>
                             <!-- Puedes agregar este botón en tu página -->
                             <a href="../cerrar_sesion.php" class="nav-item nav-link active">Cerrar Sesión</a>
 
@@ -168,7 +168,7 @@ session_start(); // Iniciar la sesión
                                 <td>$nombre_alumno</td>
                                 <td>$nombre_curso</td>
                                 <td>$fecha_certificado</td>
-                                <td><a href='ver_certificado.php?id=$certificado_id' class='btn btn-primary btn-sm'>Ver Certificado</a></td>
+                                <td><a href='ver_certificado.php?id=$certificado_id' class='btn btn-primary btn-sm'>Ver Diploma</a></td>
                               </tr>";
                     }
 
